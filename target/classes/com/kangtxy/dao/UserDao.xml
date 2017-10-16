@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 为这个mapper指定一个唯一的namespace，namespace的值习惯上设置成包名+sql映射文件名，这样就能够保证namespace的值是唯一的
+ 例如namespace="com.kangtxy.dao.UserDao"就是com.kangtxy.dao(包名)+UserDao(UserDao.xml文件去除后缀)
+-->
+<mapper namespace="com.kangtxy.dao.UserDao">
+	<!-- id属性值必须是唯一的，使用parameterType属性指明查询时使用的参数类型，resultType属性指明查询返回的结果集类型 -->
+	<select id="getUser" parameterType="com.kangtxy.entity.User" resultType="com.kangtxy.entity.User">  
+	    SELECT * FROM t_user WHERE username=#{username} AND password=#{password}  
+	</select>  
+	<insert id="addUser" parameterType="com.kangtxy.entity.User" flushCache="true">  
+	   INSERT INTO t_user (id,username,password) VALUES (#{id},#{username},#{password})  
+	</insert>  
+	<update id="updateUser" parameterType="com.kangtxy.entity.User">  
+	    UPDATE t_user SET password=#{password} WHERE id=#{id}  
+	</update>  
+	<delete id="deleteUser" parameterType="String">  
+	    DELETE FROM t_user WHERE id=#{id}  
+</delete>  
+</mapper>
