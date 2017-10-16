@@ -1,3 +1,0 @@
-# kangtxy
-
-test
